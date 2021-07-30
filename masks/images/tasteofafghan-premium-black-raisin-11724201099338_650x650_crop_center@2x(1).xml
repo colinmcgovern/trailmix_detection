@@ -1,0 +1,26 @@
+<annotation>
+	<folder>trailmix_images</folder>
+	<filename>tasteofafghan-premium-black-raisin-11724201099338_650x650_crop_center@2x.jpg</filename>
+	<path>/home/colin/Downloads/trailmix_images/tasteofafghan-premium-black-raisin-11724201099338_650x650_crop_center@2x.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1000</width>
+		<height>1000</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>raisin</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>156</xmin>
+			<ymin>126</ymin>
+			<xmax>329</xmax>
+			<ymax>338</ymax>
+		</bndbox>
+	</object>
+</annotation>

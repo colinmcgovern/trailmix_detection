@@ -1,0 +1,26 @@
+<annotation>
+	<folder>trailmix_images</folder>
+	<filename>peanut-isolated-on-white-background-260nw-1562960989.jpg</filename>
+	<path>/home/colin/Downloads/trailmix_images/peanut-isolated-on-white-background-260nw-1562960989.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>390</width>
+		<height>280</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>peanut</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>13</xmin>
+			<ymin>34</ymin>
+			<xmax>380</xmax>
+			<ymax>230</ymax>
+		</bndbox>
+	</object>
+</annotation>

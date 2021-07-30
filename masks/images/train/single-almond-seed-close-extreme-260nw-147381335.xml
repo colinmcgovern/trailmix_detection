@@ -1,0 +1,26 @@
+<annotation>
+	<folder>trailmix_images</folder>
+	<filename>single-almond-seed-close-extreme-260nw-147381335.jpg</filename>
+	<path>/home/colin/Downloads/trailmix_images/single-almond-seed-close-extreme-260nw-147381335.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>260</width>
+		<height>280</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>almond</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>25</xmin>
+			<ymin>68</ymin>
+			<xmax>232</xmax>
+			<ymax>192</ymax>
+		</bndbox>
+	</object>
+</annotation>
