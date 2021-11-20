@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>Trailmix Detector Upload</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />        
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+</head>
+<body>
+<p><h1 align="center">Trailmix Detector Upload</h1></p>
+
+<div class="main">
+    Upload a picture and the algorithm will count the number of m and ms, peanuts, raisins, and almonds in the picture. Allowed filetypes are: jpegs, pngs, and gifs.
+    {% if average_latency %}
+    The average time to analyze is {{ average_latency }} seconds.
+    {% endif %}
+    <h2>Select a file to upload</h2>
+    <p>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+    </p>
+    <form method="post" action="/" enctype="multipart/form-data">
+        <dl>
+            <p>
+                <input type="file" name="file" class="form-control" autocomplete="off" multiple="multiple" required>
+            </p>
+        </dl>
+        <p>
+            <input type="submit" value="Submit" class="btn btn-info">
+        </p>
+    </form>
+<div class="footer">2021 Colin McGovern. Feel free to copy.</div>
+</div>
+</body>
+</html>
