@@ -130,7 +130,6 @@ def result():
 @app.route('/', methods=['POST'])
 def upload_image():
 
-	clear_folder('runs')
 	clear_folder('static/uploads')
 
 	if 'file' not in request.files:
@@ -152,44 +151,51 @@ def upload_image():
 
 		if file and allowed_file(file.filename):
 			
-			filename = secure_filename(file.filename)
-			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+			try:
+				filename = secure_filename(file.filename)
+				file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
-			#Run algorithm
-			img, pred = run(UPLOAD_FOLDER+filename)
+				#Run algorithm
+				img, pred = run(UPLOAD_FOLDER+filename)
 
-			#Setting up display image
-			org_image = cv2.imread(os.path.join(app.config['UPLOAD_FOLDER'], filename), cv2.IMREAD_COLOR)
-			(h, w) = org_image.shape[:2]
-			display_image_width = 512
-			ratio = h / w
-			display_image_height = int(display_image_width * ratio)
-			dim = (display_image_width, display_image_height)
-			display_image = cv2.resize(org_image, dim)
+				#Setting up display image
+				org_image = cv2.imread(os.path.join(app.config['UPLOAD_FOLDER'], filename), cv2.IMREAD_COLOR)
+				(h, w) = org_image.shape[:2]
+				display_image_width = 512
+				ratio = h / w
+				display_image_height = int(display_image_width * ratio)
+				dim = (display_image_width, display_image_height)
+				display_image = cv2.resize(org_image, dim)
 
-			#Assigning ID
-			index = random.randint(0,1E8)
+				#Assigning ID
+				index = random.randint(0,1E8)
 
-			#Saving images
-			cv2.imwrite(os.path.join(app.config['UPLOAD_FOLDER'], "unlabeled_{}.jpg".format(index)),display_image)
-			cv2.imwrite(os.path.join(app.config['UPLOAD_FOLDER'], "labeled_{}.jpg".format(index)), draw_boxes(display_image,pred,h,w))
+				#Saving images
+				cv2.imwrite(os.path.join(app.config['UPLOAD_FOLDER'], "unlabeled_{}.jpg".format(index)),display_image)
+				cv2.imwrite(os.path.join(app.config['UPLOAD_FOLDER'], "labeled_{}.jpg".format(index)), draw_boxes(display_image,pred,h,w))
 
-			#Adding to output array			
-			unlabeled_filenames.append("unlabeled_{}.jpg".format(index))
-			labeled_filenames.append("labeled_{}.jpg".format(index))
-			descriptions.append(write_description(pred))
-			counts.append(json.dumps(pred_to_dict(pred)))
+				#Adding to output array			
+				unlabeled_filenames.append("unlabeled_{}.jpg".format(index))
+				labeled_filenames.append("labeled_{}.jpg".format(index))
+				descriptions.append(write_description(pred))
+				counts.append(json.dumps(pred_to_dict(pred)))
+			except:
+				flash('An error occured :(')
+				return redirect(request.url)
 
 		else:
 			flash('Allowed image types are - png, jpg, jpeg, gif')
 			return redirect(request.url)
 
 	return render_template('result.html',
-	data=zip(unlabeled_filenames,labeled_filenames,descriptions,counts))
+		data=zip(unlabeled_filenames,labeled_filenames,descriptions,counts))
  
 @app.route('/display/<filename>')
 def display_image(filename):
 	return redirect(url_for('static', filename='uploads/' + filename), code=301)
- 
+
+if(len(sys.argv)!=2):
+	print("error: correct input is `python server.py 8080`")
+
 if __name__ == "__main__":
 	app.run(port=sys.argv[1])
