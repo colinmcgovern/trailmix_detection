@@ -9,10 +9,7 @@
 <p><h1 align="center">Trailmix Detector Upload</h1></p>
 
 <div class="main">
-    Upload a picture and the algorithm will count the number of m and ms, peanuts, raisins, and almonds in the picture. Allowed filetypes are: jpegs, pngs, and gifs.
-    {% if average_latency %}
-    The average time to analyze is {{ average_latency }} seconds.
-    {% endif %}
+    Upload a picture and the algorithm will count the number of m and ms, peanuts, raisins, and almonds in the picture. Allowed filetypes are: jpegs, pngs, and gifs. 4MB Limit.
     <h2>Select a file to upload</h2>
     <p>
         {% with messages = get_flashed_messages() %}
@@ -28,13 +25,18 @@
     <form method="post" action="/" enctype="multipart/form-data">
         <dl>
             <p>
-                <input type="file" name="file" class="form-control" autocomplete="off" multiple="multiple" required>
+                <input type="file" name="file" class="form-control" autocomplete="off" required>
             </p>
         </dl>
         <p>
             <input type="submit" value="Submit" class="btn btn-info">
         </p>
     </form>
+    <br>
+    <h2>Example Outputs</h2>
+    <img class="free" src="/static/example_images/example3.png"><br><br>
+    <img class="free" src="/static/example_images/example1.png"><br><br>
+    <img class="free" src="/static/example_images/example2.png"><br>
 <div class="footer">2021 Colin McGovern. Feel free to copy.</div>
 </div>
 </body>

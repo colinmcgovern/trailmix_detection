@@ -15,7 +15,7 @@ UPLOAD_FOLDER = 'static/uploads/'
  
 app.secret_key = "secret key"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024
+app.config['MAX_CONTENT_LENGTH'] = 4 * 1024 * 1024
  
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
  
@@ -194,8 +194,8 @@ def upload_image():
 def display_image(filename):
 	return redirect(url_for('static', filename='uploads/' + filename), code=301)
 
-if(len(sys.argv)!=2):
-	print("error: correct input is `python server.py 8080`")
-
 if __name__ == "__main__":
-	app.run(port=sys.argv[1])
+	if(len(sys.argv)!=3):
+        	print("error: correct input is `python server.py IP PORT_NUMBER`")
+	else:
+		app.run(host=sys.argv[1],port=sys.argv[2])
