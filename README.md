@@ -1,4 +1,4 @@
 # trailmix_detection
-A web page that counts the number of m and ms, peanuts, raisins, and almonds in the picture. Using annotated images from several sources, I trained a pre-trained model to segment images via the YOLOv5 library.
+A web page that counts the number of m and ms, peanuts, raisins, and almonds in the picture. Using annotated images from several sources, I trained a pre-trained model to segment images via the YOLOv5 library. The diagram below is my analysis pipeline.
 
 ![pipeline](analysis_pipeline/trailmix_pipeline_diagram.png)
