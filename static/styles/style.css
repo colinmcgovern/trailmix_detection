@@ -15,6 +15,7 @@ img{
 .diagram{
 	width: 900px;
 	height: auto;
+	border:1px solid black;
 }
 
 body, html {
